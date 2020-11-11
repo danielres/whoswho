@@ -1,5 +1,11 @@
-import Head from "next/head";
+import { UserForm } from "components/UserForm";
+import { UserList } from "components/UserList";
 
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <UserList />
+      <UserForm />
+    </div>
+  );
 }
