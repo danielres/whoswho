@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "date-fns": "^2.16.1",
     "env-cmd": "^10.1.0",
     "faunadb": "^3.0.1",
     "graphql": "^15.4.0",
