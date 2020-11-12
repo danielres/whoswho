@@ -1,6 +1,7 @@
-export const Button = ({ children, type }) => {
+export const Button = ({ children, type, ...props }) => {
   return (
     <button
+      {...props}
       className="bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded focus:outline-none focus:shadow-outline"
       type={type}
     >
