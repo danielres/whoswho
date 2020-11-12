@@ -17,8 +17,12 @@ export const create = async (vars) => {
     }
   `;
 
-  const response = await graphQLClient.request(query, { data });
-  return response.createUser;
+  try {
+    const response = await graphQLClient.request(query, { data });
+    return response.createUser;
+  } catch (error) {
+    throw new Error(error.response.errors[0].extensions.code);
+  }
 };
 
 export const list = async () => {
