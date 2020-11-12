@@ -28,6 +28,7 @@ export const list = async () => {
         data {
           name
           email
+          createdAt
           photo {
             url
           }
