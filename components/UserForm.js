@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useToasts } from "react-toast-notifications";
 import { User } from "../src/ui/queries";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/forms/Input";
@@ -8,9 +9,25 @@ import { Stack } from "./ui/Stack";
 
 export const UserForm = () => {
   const { handleSubmit, register, errors } = useForm();
+  const { addToast } = useToasts();
+
+  const onSuccess = (user) => {
+    addToast(`New member added: ${user.name}`, {
+      appearance: "success",
+      autoDismiss: true,
+    });
+    reset();
+  };
+
+  const onError = (error) => {
+    addToast(error.message, {
+      appearance: "warning",
+      autoDismiss: true,
+    });
+  };
+
   const onSubmit = (values) => {
-    console.log({ values });
-    User.create(values).then((user) => console.log(user));
+    User.create(values).then(onSuccess).catch(onError);
   };
 
   return (
