@@ -8,7 +8,7 @@ import { patterns } from "./ui/forms/patterns";
 import { Stack } from "./ui/Stack";
 
 export const UserForm = () => {
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register, errors, reset } = useForm();
   const { addToast } = useToasts();
 
   const onSuccess = (user) => {
@@ -50,8 +50,11 @@ export const UserForm = () => {
           validate={(value) => value !== "admin" || "Nice try!"}
         />
 
-        <div>
+        <div className="flex justify-between">
           <Button type="submit">Submit</Button>
+          <Button onClick={() => reset()} type="button">
+            Reset
+          </Button>
         </div>
       </Stack>
     </form>
