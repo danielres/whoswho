@@ -1,7 +1,7 @@
 type User {
   # id: ID!
   name: String @required
-  email: String! @unique
+  email: String! @required @unique
   createdAt: Time!
   updatedAt: Time
   bio: String
