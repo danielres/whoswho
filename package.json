@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "env-cmd next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "schema:upload": "yarn ts src/api/bin/uploadSchema.ts",
+    "ts": "env-cmd ts-node -T -P tsconfig.json -O '{\"module\": \"commonjs\"}'"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -24,7 +26,9 @@
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.56",
     "postcss-preset-env": "^6.7.0",
+    "request": "^2.88.2",
     "tailwindcss": "^1.9.6",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.5"
   }
 }
