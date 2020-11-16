@@ -7,17 +7,20 @@ const H = ({ children, level = 2 }) => {
 
 export default function Home() {
   return (
-    <div className="flex -mx-8">
-      <div className="w-2/3 px-8">
-        <H>Members</H>
-        <UserList />
+    <div>
+      <div class="flex flex-col text-center w-full">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-900">
+          Members
+        </h1>
       </div>
 
-      <div className="flex-1 px-8">
-        <H>Add member</H>
-
-        <UserForm />
+      <div className="w-1/2 mx-auto">
+        <div className="mb-16">
+          <H>Add member</H>
+          <UserForm />
+        </div>
       </div>
+      <UserList />
     </div>
   );
 }
