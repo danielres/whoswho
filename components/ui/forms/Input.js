@@ -37,7 +37,7 @@ export const Input = ({
         {label && (
           <label
             className="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal"
-            for={id}
+            htmlFor={id}
           >
             {label}
           </label>
