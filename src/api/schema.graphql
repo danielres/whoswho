@@ -1,5 +1,4 @@
 type User {
-  # id: ID!
   name: String @required
   email: String! @required @unique
   createdAt: Time!
@@ -22,4 +21,13 @@ type Invitation {
 
 type Query {
   allUsers: [User]! @index(name: "allUsers")
+}
+
+input UserInput {
+  email: String!
+  name: String!
+}
+
+type Mutation {
+  createUser(data: UserInput!): User! @resolver(name: "create_user")
 }

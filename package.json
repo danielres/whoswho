@@ -6,7 +6,8 @@
     "dev": "env-cmd next dev",
     "build": "next build",
     "start": "next start",
-    "schema:upload": "yarn ts src/api/bin/uploadSchema.ts",
+    "fauna:upload:schema": "yarn ts src/api/bin/uploadSchema.ts",
+    "fauna:upload:functions": "yarn ts src/api/bin/uploadFunctions.ts",
     "ts": "env-cmd ts-node -T -P tsconfig.json -O '{\"module\": \"commonjs\"}'"
   },
   "dependencies": {

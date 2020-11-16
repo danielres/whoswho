@@ -1,18 +1,12 @@
 import { gql } from "graphql-request";
 import { graphQLClient } from "./client";
 
-export const create = async (vars) => {
-  const data = {
-    ...vars,
-    createdAt: new Date().toISOString(),
-  };
-
+export const create = async (data) => {
   const query = gql`
     mutation CreateUser($data: UserInput!) {
       createUser(data: $data) {
         name
         email
-        createdAt
       }
     }
   `;
