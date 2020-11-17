@@ -1,4 +1,9 @@
-export const Button = ({ children, type, ...props }) => {
+type TButtonProps = {
+  type: 'button' | 'submit' | 'reset',
+  onClick?: () => void
+}
+
+export const Button: React.FC<TButtonProps> = ({ children, type, ...props }) => {
   return (
     <button
       {...props}

@@ -2,8 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useToasts } from "react-toast-notifications";
 import { User } from "../src/ui/queries";
+import { TUser } from "../types/TUser.d";
+import { TUserInput } from "../types/TUserInput.d";
 import { Button } from "./ui/Button";
-import { Input } from "./ui/forms/Input";
+import { InputText } from "./ui/forms/InputText";
 import { patterns } from "./ui/forms/patterns";
 import { Stack } from "./ui/Stack";
 
@@ -11,7 +13,7 @@ export const UserForm = () => {
   const { handleSubmit, register, errors, reset } = useForm();
   const { addToast } = useToasts();
 
-  const onSuccess = (user) => {
+  const onSuccess = (user: TUser) => {
     addToast(`New member added: ${user.name}`, {
       appearance: "success",
       autoDismiss: true,
@@ -19,35 +21,41 @@ export const UserForm = () => {
     reset();
   };
 
-  const onError = (error) => {
+  const onError = (error: { message: React.ReactNode }) => {
     addToast(error.message, {
       appearance: "warning",
       autoDismiss: true,
     });
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: TUserInput) => {
+    console.log({ values });
+
     User.create(values).then(onSuccess).catch(onError);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack>
-        <Input
+        <InputText
+          autoFocus
           label="Email"
           name="email"
           errors={errors}
-          register={register}
-          pattern={patterns.email}
-          required={true}
+          ref={register({
+            pattern: patterns.email,
+            required: "Required",
+          })}
         />
 
-        <Input
+        <InputText
           label="Username"
           name="name"
           errors={errors}
-          register={register}
-          validate={(value) => value !== "admin" || "Nice try!"}
+          ref={register({
+            validate: (value) => value !== "admin" || "Nice try!",
+            required: "Required",
+          })}
         />
 
         <div className="flex justify-between">

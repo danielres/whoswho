@@ -8,6 +8,7 @@
     "start": "next start",
     "fauna:upload:schema": "yarn ts src/api/bin/uploadSchema.ts",
     "fauna:upload:functions": "yarn ts src/api/bin/uploadFunctions.ts",
+    "types:check": "tsc --esModuleInterop --noEmit --strict --skipLibCheck --baseUrl . --jsx preserve **/*.ts **/*.tsx",
     "ts": "env-cmd ts-node -T -P tsconfig.json -O '{\"module\": \"commonjs\"}'"
   },
   "dependencies": {
@@ -24,8 +25,11 @@
     "react-toast-notifications": "^2.4.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.56",
+    "@types/react-toast-notifications": "^2.4.0",
+    "@types/styled-jsx": "^2.2.8",
     "postcss-preset-env": "^6.7.0",
     "request": "^2.88.2",
     "tailwindcss": "^1.9.6",

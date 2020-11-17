@@ -1,12 +1,14 @@
 import * as config from "../config";
 
-export const get = (path) => async () => {
+export const get = (path: string) => async () => {
   const res = await fetch(`${config.api.url}${path}`);
   if (res.ok) return res.json();
   handleFailedResponse(res);
 };
 
-export const post = (path) => async (values) => {
+export const post = (path: string) => async (values: {
+  [k: string]: string;
+}) => {
   const res = await fetch(`${config.api.url}${path}`, {
     method: "POST",
     body: JSON.stringify(values),
@@ -18,8 +20,8 @@ export const post = (path) => async (values) => {
   handleFailedResponse(res);
 };
 
-const handleFailedResponse = async (res) => {
-  let error;
+const handleFailedResponse = async (res: Response) => {
+  let error: string = "Unknown error";
 
   try {
     error = (await res.json()).error;

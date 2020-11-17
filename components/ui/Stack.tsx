@@ -1,4 +1,4 @@
-export const Stack = ({ children }) => {
+export const Stack: React.FC = ({ children }) => {
   return (
     <>
       <div>{children}</div>
