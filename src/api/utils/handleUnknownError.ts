@@ -1,6 +1,9 @@
 import { reportError } from "./reportError";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export const handleUnknownError = (res, prefix) => (error) => {
+export const handleUnknownError = (res: NextApiResponse, prefix: string) => (
+  error: any
+) => {
   const status = 500;
   const { id } = reportError({ prefix, error, status });
 

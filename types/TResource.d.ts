@@ -1,0 +1,3 @@
+import { TUser } from "./TUser.d";
+
+export type TResource = TUser; // TUser | ...

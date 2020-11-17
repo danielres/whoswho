@@ -1,7 +1,8 @@
 import { gql } from "graphql-request";
+import { TUserInput } from "types/TUserInput.d";
 import { graphQLClient } from "./client";
 
-export const create = async (data) => {
+export const create = async (data: TUserInput) => {
   const query = gql`
     mutation CreateUser($data: UserInput!) {
       createUser(data: $data) {

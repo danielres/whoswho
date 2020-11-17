@@ -1,9 +1,10 @@
 import { User } from "src/api/graphql/queries";
 import { Crud } from "src/api/utils/Crud";
+import { NextApiRequest, NextApiResponse } from "next";
 
-const crud = new Crud(User);
+const crud = new Crud(User as any);
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   switch (req.method) {
     case "GET":
       return crud.list(req, res);
