@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NowRequest, NowResponse } from "@vercel/node";
 import { handleUnknownError } from "src/api/utils/handleUnknownError";
 import { TResource } from "types/TResource.d";
 
@@ -9,7 +9,7 @@ export class Crud {
     this.Resource = Resource;
   }
 
-  async create(req: NextApiRequest, res: NextApiResponse) {
+  async create(req: NowRequest, res: NowResponse) {
     try {
       const result = await this.Resource.create(JSON.parse(req.body));
       return res.status(201).json(result);
@@ -26,7 +26,7 @@ export class Crud {
     }
   }
 
-  async list(req: NextApiRequest, res: NextApiResponse) {
+  async list(req: NowRequest, res: NowResponse) {
     return res.json(await this.Resource.list());
   }
 }
