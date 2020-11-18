@@ -1,10 +1,10 @@
+import { NowRequest, NowResponse } from "@vercel/node";
 import { User } from "src/api/graphql/queries";
 import { Crud } from "src/api/utils/Crud";
-import { NextApiRequest, NextApiResponse } from "next";
 
 const crud = new Crud(User as any);
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NowRequest, res: NowResponse) => {
   switch (req.method) {
     case "GET":
       return crud.list(req, res);

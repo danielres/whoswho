@@ -1,7 +1,7 @@
+import { NowResponse } from "@vercel/node";
 import { reportError } from "./reportError";
-import { NextApiRequest, NextApiResponse } from "next";
 
-export const handleUnknownError = (res: NextApiResponse, prefix: string) => (
+export const handleUnknownError = (res: NowResponse, prefix: string) => (
   error: any
 ) => {
   const status = 500;
