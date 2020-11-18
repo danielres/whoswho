@@ -1,7 +1,9 @@
 import * as config from "../config";
 
+const getApiUrl = () => `${window.location.origin}${config.api.path}`;
+
 export const get = (path: string) => async () => {
-  const res = await fetch(`${config.api.url}${path}`);
+  const res = await fetch(`${getApiUrl()}${path}`);
   if (res.ok) return res.json();
   handleFailedResponse(res);
 };
@@ -9,7 +11,7 @@ export const get = (path: string) => async () => {
 export const post = (path: string) => async (values: {
   [k: string]: string;
 }) => {
-  const res = await fetch(`${config.api.url}${path}`, {
+  const res = await fetch(`${getApiUrl()}${path}`, {
     method: "POST",
     body: JSON.stringify(values),
   });
