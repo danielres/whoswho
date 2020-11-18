@@ -1,5 +1,5 @@
 import path from "path";
-import { env } from "process";
+import { config, env } from "process";
 
 export const fauna = {
   graphql: {
@@ -17,3 +17,5 @@ export const fauna = {
   },
   db: { name: "main" },
 };
+
+console.log("config=========", JSON.stringify(fauna, null, 2));
