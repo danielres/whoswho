@@ -6,6 +6,7 @@
     "dev": "env-cmd next dev",
     "build": "next build",
     "start": "next start",
+    "fauna:prepare": "yarn ts src/api/bin/prepare.ts",
     "fauna:upload:schema": "yarn ts src/api/bin/uploadSchema.ts",
     "fauna:upload:functions": "yarn ts src/api/bin/uploadFunctions.ts",
     "types:check": "tsc --esModuleInterop --noEmit --strict --skipLibCheck --baseUrl . --jsx preserve **/*.ts **/*.tsx",
