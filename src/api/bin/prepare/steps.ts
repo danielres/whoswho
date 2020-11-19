@@ -4,21 +4,20 @@ import { uploadSchema } from "../uploadSchema";
 import { FaunadbAdapter } from "./FaunadbAdapter";
 
 const fauna = new FaunadbAdapter(config.fauna.keys.admin);
+const dbName = config.fauna.db.name;
 
 export const steps = [
   {
-    name: `create db whoshwo-staging`,
-    action: async () => await fauna.createProjectChildDb("whoswho", "staging"),
+    name: `create db ${dbName}`,
+    action: async () => await fauna.createProjectChildDb(dbName),
   },
   {
     name: `maybe create child db admin key`,
-    action: async () =>
-      await fauna.createKeyAndWriteKeyfile("whoswho", "staging"),
+    action: async () => await fauna.createKeyAndWriteKeyfile(dbName),
   },
   {
     name: `update fauna client to child db`,
-    action: async () =>
-      await fauna.updateClientWithKeyFile("whoswho", "staging"),
+    action: async () => await fauna.updateClientWithKeyFile(dbName),
   },
   {
     name: `create db "_migrations"`,

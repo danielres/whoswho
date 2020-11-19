@@ -10,28 +10,28 @@ export class FaunadbAdapter {
     this.client = new faunadb.Client({ secret });
   }
 
-  async createProjectChildDb(project: string, env: string) {
+  async createProjectChildDb(dbName: string) {
     await this.client.query(
       q.CreateDatabase({
-        name: `${project}-${env}`,
+        name: dbName,
       })
     );
   }
 
-  updateClientWithKeyFile(project: string, env: string) {
-    const keyFile = `${project}-${env}.key.json`;
+  updateClientWithKeyFile(dbName: string) {
+    const keyFile = `${dbName}.key.json`;
     const { secret } = JSON.parse(fs.readFileSync(keyFile).toString());
     this.secret = secret;
     this.client = new faunadb.Client({ secret });
   }
 
-  async createKeyAndWriteKeyfile(project: string, env: string) {
-    const path = `${project}-${env}.key.json`;
+  async createKeyAndWriteKeyfile(dbName: string) {
+    const path = `${dbName}.key.json`;
     if (fs.existsSync(path)) throw new Error(`File "${path}" already exists`);
 
     const key = await this.client.query(
       q.CreateKey({
-        database: q.Database(`${project}-${env}`),
+        database: q.Database(dbName),
         role: "admin",
       })
     );
