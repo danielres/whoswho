@@ -2,14 +2,12 @@ import fs from "fs";
 import request from "request";
 import * as config from "../config";
 
-const uploadSchema = async () => {
+export const uploadSchema = async (secret: string, file: string) => {
   const url = config.fauna.graphql.import.endpoint;
-  const token = config.fauna.keys.admin;
-  const file = config.fauna.graphql.schema.path;
 
   try {
     console.log("Uploading Graphql Schema...\n");
-    const response = await streamUpload(url, token, file);
+    const response = await streamUpload(url, secret, file);
     console.log(response);
   } catch (error) {
     console.log(`Error during schema import`);
@@ -18,7 +16,10 @@ const uploadSchema = async () => {
   }
 };
 
-uploadSchema();
+// If file called directly (not imported):
+if (require.main === module) {
+  uploadSchema(config.fauna.keys.admin, config.fauna.graphql.schema.path);
+}
 
 function streamUpload(url: string, token: string, file: string) {
   return new Promise((resolve, reject) => {

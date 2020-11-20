@@ -1,5 +1,9 @@
 import path from "path";
-import { config, env } from "process";
+import { env } from "process";
+
+export const project = {
+  name: env.PROJECT_NAME,
+};
 
 export const fauna = {
   graphql: {
@@ -15,7 +19,4 @@ export const fauna = {
     admin: String(env.FAUNA_KEYS_ADMIN),
     server: String(env.FAUNA_KEYS_SERVER),
   },
-  db: { name: "main" },
 };
-
-console.log("config=========", JSON.stringify(fauna, null, 2));
