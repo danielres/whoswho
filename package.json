@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "env-cmd next dev",
-    "prebuild": "yarn fauna:prepare",
-    "build": "next build",
+    "dev": "yarn fauna:prepare && env-cmd next dev",
+    "build": "yarn fauna:prepare && next build",
     "start": "next start",
     "fauna:prepare": "env-cmd --silent yarn ts src/api/bin/prepare.ts",
     "types:check": "tsc -P tsconfig.json",
