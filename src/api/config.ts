@@ -6,9 +6,6 @@ export const project = {
 };
 
 export const fauna = {
-  db: {
-    name: `${project.name}-${env.NODE_ENV}`,
-  },
   graphql: {
     endpoint: String(env.FAUNA_GRAPHQL_ENDPOINT),
     import: {
