@@ -4,13 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "env-cmd next dev",
+    "prebuild": "yarn fauna:prepare",
     "build": "next build",
     "start": "next start",
-    "fauna:prepare": "yarn ts src/api/bin/prepare.ts",
-    "fauna:upload:schema": "yarn ts src/api/bin/uploadSchema.ts",
-    "fauna:upload:functions": "yarn ts src/api/bin/uploadFunctions.ts",
+    "fauna:prepare": "env-cmd --silent yarn ts src/api/bin/prepare.ts",
     "types:check": "tsc -P tsconfig.json",
-    "ts": "env-cmd ts-node -T -P tsconfig.json -O '{\"module\": \"commonjs\"}'"
+    "ts": "ts-node -T -P tsconfig.json -O '{\"module\": \"commonjs\"}'"
   },
   "dependencies": {
     "classnames": "^2.2.6",
