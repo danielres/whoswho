@@ -1,7 +1,7 @@
 import { createDocumentMigration } from "./migrate/createDocumentMigration";
+import { getLatestMigrationId } from "./migrate/getLatestMigrationId";
 import { migrations } from "./migrate/migrations";
 import { client } from "./utils/admin/client";
-import { getLatestMigrationId } from "./migrate/getLatestMigrationId";
 
 const run = async () => {
   console.log(`=== Running fauna:migrate (env: ${process.env.NODE_ENV})`);
@@ -11,17 +11,18 @@ const run = async () => {
   for (const migration of migrations) {
     console.log(`Running migrations - Latest: ${latestMigrationId}`);
 
+    const { action, id, name } = migration;
     try {
-      if (latestMigrationId < migration.id) {
-        await migration.action();
-        await createDocumentMigration(client, migration);
-        console.log(`✔ Migration ${migration.id}: ${migration.name}`);
+      if (latestMigrationId < id) {
+        await action(client);
+        await createDocumentMigration(client, { id, name });
+        console.log(`✔ Migration ${id}: ${name}`);
       } else {
-        console.log(`SKIP Migration ${migration.id}: ${migration.name}`);
+        console.log(`SKIP Migration ${id}: ${name}`);
       }
     } catch (error) {
       console.error(
-        `✗ Migration ${migration.id}: ${migration.name}`.padEnd(50),
+        `✗ Migration ${id}: ${name}`.padEnd(50),
         `Error: ${error.message}`
       );
     }
