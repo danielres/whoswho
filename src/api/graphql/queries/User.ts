@@ -1,5 +1,4 @@
 import { gql } from "graphql-request";
-import { TUserInput } from "types/TUserInput.d";
 import { graphQLClient } from "./client";
 
 export const create = async (data: TUserInput) => {

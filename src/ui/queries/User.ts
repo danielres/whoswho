@@ -1,4 +1,3 @@
-import { TUserInput } from "types/TUserInput";
 import * as api from "./api";
 
 export const create = (values: TUserInput) => api.post("/users")(values);

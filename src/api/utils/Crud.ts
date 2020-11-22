@@ -1,6 +1,5 @@
 import { NowRequest, NowResponse } from "@vercel/node";
 import { handleUnknownError } from "src/api/utils/handleUnknownError";
-import { TResource } from "types/TResource.d";
 
 export class Crud {
   Resource: any;

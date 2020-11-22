@@ -1,4 +1,4 @@
-export type TMigration = {
+type TMigration = {
   id: number;
   name: string;
   action: () => void;
