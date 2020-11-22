@@ -1,5 +1,13 @@
 import path from "path";
-import { env } from "process";
+
+const { env } = process;
+
+export const auth = {
+  facebook: {
+    clientId: String(env.AUTH_FACEBOOK_CLIENT_ID),
+    clientSecret: String(env.AUTH_FACEBOOK_CLIENT_SECRET),
+  },
+};
 
 export const project = {
   name: env.PROJECT_NAME,
