@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn fauna:prepare && env-cmd next dev",
-    "build": "yarn fauna:prepare && next build",
+    "dev": "run-s fauna:prepare fauna:migrate && next dev",
+    "build": "run-s fauna:prepare fauna:migrate && next build",
     "start": "next start",
     "fauna:prepare": "env-cmd --silent yarn ts src/api/bin/prepare.ts",
+    "fauna:migrate": "env-cmd --silent yarn ts src/api/bin/migrate.ts",
     "types:check": "tsc -P tsconfig.json",
     "ts": "ts-node -T -P tsconfig.json -O '{\"module\": \"commonjs\"}'"
   },
