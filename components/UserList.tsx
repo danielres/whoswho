@@ -1,7 +1,6 @@
 import formatDistance from "date-fns/formatDistance";
 import { useEffect, useState } from "react";
 import { User } from "../src/ui/queries";
-import { TUser } from "../types/TUser.d";
 
 export const UserList = () => {
   const [users, setUsers] = useState([] as TUser[]);

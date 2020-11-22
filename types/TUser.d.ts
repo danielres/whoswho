@@ -1,7 +1,4 @@
-import { TPhoto } from "./TPhoto";
-import { TTime } from "./TTime";
-
-export type TUser = {
+type TUser = {
   name: string;
   email: string;
   createdAt: TTime;

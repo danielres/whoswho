@@ -1,3 +1,3 @@
-export type TPhoto = {
+type TPhoto = {
   url: string;
 };

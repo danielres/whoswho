@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "env-cmd next dev",
-    "build": "next build",
+    "dev": "run-s fauna:prepare fauna:migrate && next dev",
+    "build": "run-s fauna:prepare fauna:migrate && next build",
     "start": "next start",
-    "fauna:prepare": "yarn ts src/api/bin/prepare.ts",
-    "fauna:upload:schema": "yarn ts src/api/bin/uploadSchema.ts",
-    "fauna:upload:functions": "yarn ts src/api/bin/uploadFunctions.ts",
+    "fauna:prepare": "env-cmd --silent yarn ts src/api/bin/prepare.ts",
+    "fauna:migrate": "env-cmd --silent yarn ts src/api/bin/migrate.ts",
     "types:check": "tsc -P tsconfig.json",
-    "ts": "env-cmd ts-node -T -P tsconfig.json -O '{\"module\": \"commonjs\"}'"
+    "ts": "ts-node -T -P tsconfig.json -O '{\"module\": \"commonjs\"}'"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -20,6 +19,7 @@
     "graphql": "^15.4.0",
     "graphql-request": "^3.3.0",
     "next": "10.0.1",
+    "npm-run-all": "^4.1.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-hook-form": "^6.11.0",

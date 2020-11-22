@@ -1,4 +1,4 @@
-export type TUserInput = {
+type TUserInput = {
   name: string;
   email: string;
 };

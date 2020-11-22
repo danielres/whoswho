@@ -7,9 +7,13 @@ export const project = {
 
 export const fauna = {
   graphql: {
-    endpoint: String(env.FAUNA_GRAPHQL_ENDPOINT),
+    endpoint: env.FAUNA_GRAPHQL_ENDPOINT
+      ? env.FAUNA_GRAPHQL_ENDPOINT
+      : "https://graphql.fauna.com/graphql",
     import: {
-      endpoint: String(env.FAUNA_GRAPHQL_IMPORT_ENDPOINT),
+      endpoint: env.FAUNA_GRAPHQL_IMPORT_ENDPOINT
+        ? env.FAUNA_GRAPHQL_IMPORT_ENDPOINT
+        : "https://graphql.fauna.com/import",
     },
     schema: {
       path: path.join(process.cwd(), "src", "api", "schema.graphql"),

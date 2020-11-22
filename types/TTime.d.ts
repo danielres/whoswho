@@ -1,1 +1,1 @@
-export type TTime = string;
+type TTime = string;

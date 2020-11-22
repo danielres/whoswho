@@ -2,8 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useToasts } from "react-toast-notifications";
 import { User } from "../src/ui/queries";
-import { TUser } from "../types/TUser.d";
-import { TUserInput } from "../types/TUserInput.d";
 import { Button } from "./ui/Button";
 import { InputText } from "./ui/forms/InputText";
 import { patterns } from "./ui/forms/patterns";
